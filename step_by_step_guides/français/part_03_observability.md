@@ -10,7 +10,7 @@
 
 CDE propose une fonctionnalité d'observabilité des jobs intégrée, incluant une interface Job Runs, l'interface Airflow, et la possibilité de télécharger les métadonnées et les journaux des jobs via l'API et la CLI de CDE.
 
-Cloudera Observability est un service Cloudera qui vous aide à comprendre de manière interactive votre environnement, vos services de données, vos charges de travail, vos clusters et vos ressources à travers tous les services de calcul dans un environnement CDP - ***y compris CDE***.
+Cloudera Observability est un service Cloudera qui vous aide à comprendre de manière interactive votre environnement, vos services de données, vos charges de , vos clusters et vos ressources à travers tous les services de calcul dans un environnement CDP - ***y compris CDE***.
 
 Lorsque une charge de job se termine, les informations de diagnostic sur le job ou la requête et le cluster qui les a traités sont collectées par Telemetry Publisher et envoyées à Cloudera Observability, afin que vous puissiez optimiser vos requêtes et pipelines grâce à :
 

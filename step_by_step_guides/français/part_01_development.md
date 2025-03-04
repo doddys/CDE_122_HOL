@@ -8,7 +8,7 @@
 
 ### Une Brève Introduction à Spark
 
-Apache Spark est un système de traitement distribué open-source utilisé pour les charges de travail de big data. Il a acquis une extrême popularité en tant que moteur de choix pour l'analyse interactive des données et le déploiement de pipelines d'Ingénierie de Données en Production et d'
+Apache Spark est un système de traitement distribué open-source utilisé pour les charges de job de big data. Il a acquis une extrême popularité en tant que moteur de choix pour l'analyse interactive des données et le déploiement de pipelines d'Ingénierie de Données en Production et d'
 
 Apprentissage Machine à grande échelle.
 
@@ -263,11 +263,11 @@ incReadDf.show()
 
 Le lac de données dans CDP simplifie l'analyse avancée sur toutes les données avec une plateforme unifiée pour les données structurées et non structurées et des services de données intégrés pour permettre tout cas d'utilisation analytique allant de ML, BI jusqu'à l'analyse en flux et l'analyse en temps réel. Apache Iceberg est le secret du lac de données ouvert.
 
-Apache Iceberg est un format de table ouvert conçu pour les charges de travail analytiques volumineuses. Il prend en charge l'évolution du schéma, le partitionnement caché, l'évolution du design de partitions et le voyage dans le temps. Chaque changement dans la table crée un snapshot d'Iceberg, ce qui aide à résoudre les problèmes de concurrence et permet aux lecteurs de scanner un état stable de la table à chaque fois.
+Apache Iceberg est un format de table ouvert conçu pour les charges de job analytiques volumineuses. Il prend en charge l'évolution du schéma, le partitionnement caché, l'évolution du design de partitions et le voyage dans le temps. Chaque changement dans la table crée un snapshot d'Iceberg, ce qui aide à résoudre les problèmes de concurrence et permet aux lecteurs de scanner un état stable de la table à chaque fois.
 
 Iceberg est bien adapté à une variété de cas d'utilisation, y compris l'Analyse de Lac de Données, les pipelines d'Ingénierie de Données et la conformité réglementaire avec des aspects spécifiques des régulations comme le GDPR (Règlement Général sur la Protection des Données) et le CCPA (Loi sur la Protection de la Vie Privée des Consommateurs) qui exigent la capacité de supprimer des données de clients sur demande.
 
-Les Clusters Virtuels CDE fournissent un support natif pour Iceberg. Les utilisateurs peuvent exécuter des charges de travail de Spark et interagir avec leurs tables Iceberg via des déclarations SQL. La Couche de Métadonnées d'Iceberg suit les versions des tables Iceberg via des Snapshots et fournit des Tables de Métadonnées avec snapshot et autres informations utiles. Dans ce Laboratoire, nous avons utilisé Iceberg pour accéder à l'ensemble de données des transactions par carte de crédit à un moment donné.
+Les Clusters Virtuels CDE fournissent un support natif pour Iceberg. Les utilisateurs peuvent exécuter des charges de job de Spark et interagir avec leurs tables Iceberg via des déclarations SQL. La Couche de Métadonnées d'Iceberg suit les versions des tables Iceberg via des Snapshots et fournit des Tables de Métadonnées avec snapshot et autres informations utiles. Dans ce Laboratoire, nous avons utilisé Iceberg pour accéder à l'ensemble de données des transactions par carte de crédit à un moment donné.
 
 Dans cette section, vous avez d'abord exploré deux ensembles de données de manière interactive avec les sessions interactives de CDE. Cette fonctionnalité vous a permis d'exécuter des requêtes ad-hoc sur de grandes données structurées et non structurées, et de prototyper du code d'Applications Spark pour une exécution par lot.
 
