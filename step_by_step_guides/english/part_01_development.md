@@ -15,7 +15,7 @@ In CDE you can use Spark to explore data interactively via CDE Sessions or deplo
 
 ### Lab 1: Run PySpark Interactive Session
 
-Navigate to the CDE Home Page and launch a PySpark Session. Leave default settings intact.
+Navigate to the CDE Home Page and launch a PySpark Session. Leave default settings intact. (NO CUSTOM Python ENV)
 
 ![alt text](../../img/part1-cdesession-1.png)
 
@@ -35,8 +35,8 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 from pyspark.sql.types import *
 
-storageLocation = "s3a://goes-se-sandbox01/data"
-username = "user002"
+storageLocation = "hdfs:///tmp/hol"
+username = "user001"
 ```
 
 ![alt text](../../img/part1-cdesession-4.png)
@@ -65,6 +65,7 @@ def flatten_struct(schema, prefix=""):
 ### RUN PYTHON FUNCTION TO FLATTEN NESTED STRUCTS AND VALIDATE NEW SCHEMA
 transactionsDf = transactionsDf.select(flatten_struct(transactionsDf.schema))
 transactionsDf.printSchema()
+transactionsDf.show()
 ```
 
 ```
@@ -74,6 +75,7 @@ transactionsDf = transactionsDf.withColumnRenamed("transaction.transaction_curre
 transactionsDf = transactionsDf.withColumnRenamed("transaction.transaction_type", "transaction_type")
 transactionsDf = transactionsDf.withColumnRenamed("transaction_geolocation.latitude", "latitude")
 transactionsDf = transactionsDf.withColumnRenamed("transaction_geolocation.longitude", "longitude")
+transactionsDf.printSchema()
 ```
 
 ```
@@ -82,6 +84,7 @@ transactionsDf = transactionsDf.withColumn("transaction_amount",  transactionsDf
 transactionsDf = transactionsDf.withColumn("latitude",  transactionsDf["latitude"].cast('float'))
 transactionsDf = transactionsDf.withColumn("longitude",  transactionsDf["longitude"].cast('float'))
 transactionsDf = transactionsDf.withColumn("event_ts", transactionsDf["event_ts"].cast("timestamp"))
+transactionsDf.printSchema()
 ```
 
 ```
@@ -143,6 +146,8 @@ spark.sql("SELECT name AS name, \
 spark.sql("SELECT COUNT(name) AS NM_COUNT, \
           credit_card_number AS CC_NUM FROM cust_info GROUP BY CC_NUM ORDER BY NM_COUNT DESC \
           LIMIT 100").show()
+
+spark.sql("SELECT * FROM cust_info where cc_num='3674567891196281'").show()
 ```
 
 ```
@@ -214,14 +219,16 @@ Spark SQL Command:
 spark.sql("""SELECT TRANSACTION_TYPE, COUNT(*) FROM spark_catalog.HOL_DB_{0}.TRANSACTIONS_{0} GROUP BY TRANSACTION_TYPE""".format(username)).show()
 
 # MERGE OPERATION
-spark.sql("""MERGE INTO spark_catalog.HOL_DB_{0}.TRANSACTIONS_{0} t   
-USING (SELECT * FROM trx_batch) s          
-ON t.credit_card_number = s.credit_card_number               
+spark.sql("""MERGE INTO spark_catalog.HOL_DB_{0}.TRANSACTIONS_{0} t
+USING (SELECT * FROM trx_batch) s
+ON t.credit_card_number = s.credit_card_number
 WHEN MATCHED AND t.transaction_amount < 1000 AND t.transaction_currency != "CHF" THEN UPDATE SET t.transaction_type = "invalid"
 WHEN NOT MATCHED THEN INSERT *""".format(username))
 
 # POST-MERGE COUNT:
 spark.sql("""SELECT TRANSACTION_TYPE, COUNT(*) FROM spark_catalog.HOL_DB_{0}.TRANSACTIONS_{0} GROUP BY TRANSACTION_TYPE""".format(username)).show()
+
+spark.sql("""SELECT * FROM spark_catalog.HOL_DB_{0}.TRANSACTIONS_{0} WHERE TRANSACTION_TYPE='invalid'""".format(username)).show()
 ```
 
 #### Iceberg Time Travel / Incremental Read
