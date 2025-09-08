@@ -111,7 +111,7 @@ distanceDf = distanceDf.filter(distanceDf.trx_dist_from_home > 50)
 #               SAVE DATA TO NEW ICEBERG TABLE
 #---------------------------------------------------
 
-#distanceDf.show()
+distanceDf.show()
 
 gold_cols = ['transaction_amount', 'transaction_currency', 'transaction_type', 'trx_dist_from_home', 'name', 'email', 'bank_country', 'account_no']
 
