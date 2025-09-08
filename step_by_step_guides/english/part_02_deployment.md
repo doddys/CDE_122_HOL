@@ -82,7 +82,7 @@ Enter the following values without quotes into the corresponding fields. Make su
 * Name: 001_Lakehouse_Bronze_userxxx
 * File: Select from Repository -> "cde_spark_jobs/001_Lakehouse_Bronze.py"
 * Arguments: userxxx #e.g. user002
-* Advanced Options - Resources: Spark_Files_Resource
+* Advanced Options - Resources: Spark-Files-Shared
 * Advanced Options - Repositories: CDE_Repo_userxxx e.g. CDE_Repo_user002
 * Compute Options - increase "Executor Cores" and "Executor Memory" from 1 to 2.
 ```
@@ -150,7 +150,7 @@ Open the "004_airflow_dag.py" script located in the "cde_airflow_jobs" folder. F
 
 Download the file from [this URL](https://github.com/pdefusco/CDE_121_HOL/tree/main/cde_airflow_jobs) to your local machine. Open it in your editor of choice and edit the username variable at line 52.
 
-Then navigate to the CDE Jobs UI and create a new CDE Job. Select Airflow as the Job Type. Select the "004_airflow_dag.py" script and elect to create a new Files Resource named after yourself in the process. Finally, add the Files Resource dependency where you loaded "my_file.txt".  
+Then navigate to the CDE Jobs UI and create a new CDE Job. Select Airflow as the Job Type. Select the "004_airflow_dag.py" script and elect to create a new Files Resource named after yourself in the process. Finally, add the Files Resource dependency where you loaded "my_file.txt".
 
 ![alt text](../../img/new_airflow_job_1.png)
 
