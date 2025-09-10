@@ -47,7 +47,7 @@ Use the following parameters for the form:
 
 ```
 Repository Name: CDE_Repo_userxxx
-URL: https://github.com/pdefusco/CDE_121_HOL.git
+URL: https://github.com/doddys/CDE_122_HOL.git
 Branch: main
 ```
 
